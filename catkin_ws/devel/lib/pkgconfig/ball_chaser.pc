@@ -1,8 +1,0 @@
-prefix=/home/sanjar/UW/Udacity/RoboticsSoftwareEngineer/project2/catkin_ws/devel
-
-Name: ball_chaser
-Description: Description of ball_chaser
-Version: 0.0.0
-Cflags: -I/home/sanjar/UW/Udacity/RoboticsSoftwareEngineer/project2/catkin_ws/devel/include -I/home/sanjar/UW/Udacity/RoboticsSoftwareEngineer/project2/catkin_ws/src/ball_chaser/include
-Libs: -L${prefix}/lib 
-Requires: roscpp std_msgs geometry_msgs sensor_msgs message_runtime
