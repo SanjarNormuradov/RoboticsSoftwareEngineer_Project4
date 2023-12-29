@@ -11,8 +11,8 @@
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
 
     <!-- AMCL Node -->
-    <node name="amcl" ...>
-        <remap from="scan" to="amcl_bot/laser/scan"/>
+    <node name="amcl" pkg="amcl" type="amcl" output="screen">
+        <remap from="amcl_bot/laser/scan" to="scan"/>
 
         <param name="odom_frame_id" value="odom"/>
         <param name="odom_model_type" value="diff-corrected"/>
@@ -27,13 +27,13 @@
         <param name="max_particles" value="1000"/><!--Maximum allowed number of particles.-->
         <param name="update_min_d" value="0.2"/><!--Translational movement required before performing a filter update.-->
         <param name="update_min_a" value="$(eval 3.14 / 6)"/><!--Rotational movement required before performing a filter update.-->
-        <param name="resample_interval" value="0"/><!--Number of filter updates required before resampling.-->
-        <param name="transform_tolerance" value="0"/><!--Time with which to post-date the transform that is published, to indicate that this transform is valid into the future.-->
+        <param name="resample_interval" value="2"/><!--Number of filter updates required before resampling.-->
+        <param name="transform_tolerance" value="0.5"/><!--Time with which to post-date the transform that is published, to indicate that this transform is valid into the future.-->
     </node>
 
     <!-- Move Base -->
     <node name="move_base" pkg="move_base" type="move_base" respawn="false" output="screen">
-        <remap from="scan" to="amcl_bot/laser/scan"/>
+        <remap from="amcl_bot/laser/scan" to="scan"/>
         <param name="base_global_planner" value="navfn/NavfnROS" />
         <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
     </node>
