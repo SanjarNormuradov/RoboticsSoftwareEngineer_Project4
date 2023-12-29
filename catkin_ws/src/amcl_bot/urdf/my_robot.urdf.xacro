@@ -12,6 +12,7 @@
   
   <!-- Links -->
   <link name="robot_footprint"></link>
+  <link name="base_link"></link>
 
   <!-- chassis -->
   <link name='chassis'>
@@ -168,6 +169,12 @@
   <joint name="robot_footprint_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
     <parent link="robot_footprint" />
+    <child link="base_link" />
+  </joint>
+
+  <joint name="base_link_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="base_link" />
     <child link="chassis" />
   </joint>
 
